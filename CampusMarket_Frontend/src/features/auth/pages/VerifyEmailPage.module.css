@@ -1,0 +1,16 @@
+.center { text-align: center; }
+
+.iconCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-dark);
+  font-size: 24px;
+  margin: 0 auto 16px;
+}
+
+.errorCircle { background: var(--stamp-tint); color: var(--stamp); }

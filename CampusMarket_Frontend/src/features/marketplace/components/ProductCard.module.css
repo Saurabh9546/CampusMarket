@@ -1,0 +1,81 @@
+.listingCard {
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.listingImg {
+  aspect-ratio: 1;
+  background: var(--gray-tint, #EDECE7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #6E6D65);
+  font-size: 11px;
+  position: relative;
+}
+
+.heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.listingBody {
+  padding: 10px 12px;
+}
+
+.listingTitle {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.listingPrice {
+  font-family: var(--mono, monospace);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent-dark, #1F4D36);
+}
+
+.listingMeta {
+  font-size: 11px;
+  color: var(--muted, #6E6D65);
+  margin-top: 4px;
+}
+
+.listingMetaRow {
+  margin-top: 6px;
+}
+
+.ownBadge {
+  color: var(--accent-dark, #1F4D36);
+  font-weight: 600;
+}
+
+.statusAvailable {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--accent-tint, #E6EFE9);
+  color: var(--accent-dark, #1F4D36);
+}
+
+.statusSold {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--gray-tint, #EDECE7);
+  color: var(--muted, #6E6D65);
+}

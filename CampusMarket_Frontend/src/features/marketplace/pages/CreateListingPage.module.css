@@ -1,0 +1,18 @@
+.layout {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.pageTitle {
+  font-family: var(--serif, serif);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0 0 4px;
+}
+
+.subtle {
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+  margin-bottom: 20px;
+}

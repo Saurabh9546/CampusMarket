@@ -1,0 +1,38 @@
+@import './variables.css';
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: #EAE9E3;
+  color: var(--ink);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin: 0;
+}
+
+a { color: var(--accent-dark); text-decoration: none; }
+
+button { font-family: var(--font-sans); cursor: pointer; }
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/*
+ * Was defined 3 separate ways: an unused .subtle in AuthLayout.module.css,
+ * inline styles in LoginPage/RegisterPage, and a local .subtle in
+ * VerifyEmailPage.module.css. One global utility now.
+ */
+.subtle {
+  color: var(--muted);
+  font-size: 13px;
+}

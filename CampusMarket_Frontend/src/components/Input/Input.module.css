@@ -1,0 +1,41 @@
+.wrapper { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+
+.label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.inputRow:focus-within { border-color: var(--accent); }
+.inputRowError { border-color: var(--stamp); }
+
+.input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  background: transparent;
+}
+
+.iconSlot { color: var(--muted); display: flex; }
+
+.errorText { font-size: 11px; color: var(--stamp); }
+
+.togglePassword {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  color: var(--muted);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,21 @@
+.wrap { display: flex; min-height: 100vh; }
+
+.hero {
+  flex: 1;
+  background: var(--ink);
+  color: #DCE2EA;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  width: 460px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  margin: 0 auto;
+}

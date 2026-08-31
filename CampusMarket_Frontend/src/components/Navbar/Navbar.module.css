@@ -1,0 +1,213 @@
+.navbar {
+  background: var(--card, #FFFFFF);
+  border-bottom: 1px solid var(--line, #DEDBD1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbarInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--serif, serif);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ink, #16243D);
+  white-space: nowrap;
+  padding: 0;
+}
+
+.logoAccent {
+  color: var(--accent-dark, #1F4D36);
+}
+
+.desktopSearchSlot {
+  flex: 1;
+  min-width: 120px;
+}
+
+.desktopNav {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.navLink {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid var(--line-strong, #C7C3B6);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--ink, #16243D);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.navLink:hover,
+.navLinkActive {
+  background: var(--accent-tint, #E6EFE9);
+  border-color: var(--accent-dark, #1F4D36);
+  color: var(--accent-dark, #1F4D36);
+  font-weight: 600;
+}
+
+.btnPrimary {
+  padding: 8px 16px;
+  background: var(--accent-dark, #1F4D36);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.btnPrimary:hover,
+.btnPrimaryActive {
+  background: #163a29;
+}
+
+.profileWrapper {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.profileChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.profileName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink, #16243D);
+  white-space: nowrap;
+}
+
+.profileDropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-width: 140px;
+  overflow: hidden;
+  z-index: 200;
+}
+
+.profileMenuItem {
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--ink, #16243D);
+  border-bottom: 1px solid var(--line, #DEDBD1);
+}
+
+.profileMenuItem:hover {
+  background: var(--gray-tint, #EDECE7);
+}
+
+.logoutBtn {
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--stamp, #B23A2E);
+}
+
+.logoutBtn:hover {
+  background: var(--gray-tint, #EDECE7);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-strong, #C7C3B6);
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 6px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 20px 16px;
+  border-top: 1px solid var(--line, #DEDBD1);
+}
+
+.mobileMenu > * {
+  width: 100%;
+  text-align: left;
+}
+
+/* Inside the mobile dropdown, nav links become flat list rows (no visible
+   button borders/boxes) with a plain gray hover/active highlight — matches
+   a standard dropdown menu pattern rather than looking like stacked buttons.
+   "+ Sell an item" is deliberately excluded here since it's the primary
+   action and should stay visually distinct as a solid CTA even in the
+   mobile menu. */
+.mobileMenu .navLink {
+  border: none;
+  border-bottom: 1px solid var(--line, #DEDBD1);
+  border-radius: 0;
+  background: none;
+  padding: 12px 8px;
+  font-weight: 400;
+  color: var(--ink, #16243D);
+}
+
+.mobileMenu .navLink:hover,
+.mobileMenu .navLinkActive {
+  background: var(--gray-tint, #EDECE7);
+  color: var(--ink, #16243D);
+  font-weight: 600;
+  border-color: var(--line, #DEDBD1);
+}
+
+.mobileMenu .btnPrimary {
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+@media (max-width: 860px) {
+  .desktopNav,
+  .profileName,
+  .desktopSearchSlot {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

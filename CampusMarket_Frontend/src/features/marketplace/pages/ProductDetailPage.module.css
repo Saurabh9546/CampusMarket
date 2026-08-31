@@ -1,0 +1,174 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.backLink {
+  background: none;
+  border: none;
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.layout {
+  display: flex;
+  gap: 32px;
+}
+
+.imageBlock {
+  width: 360px;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  background: var(--gray-tint, #EDECE7);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+}
+
+.infoBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.title {
+  font-family: var(--serif, serif);
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0;
+}
+
+.price {
+  font-family: var(--mono, monospace);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--accent-dark, #1F4D36);
+  margin-top: 8px;
+}
+
+.category {
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.description {
+  margin-top: 20px;
+  line-height: 1.6;
+  font-size: 14px;
+  color: var(--ink-soft, #3E4C63);
+}
+
+.sellerCard {
+  margin-top: 24px;
+  padding: 14px 16px;
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtleSmall {
+  font-size: 11px;
+  color: var(--muted, #6E6D65);
+  margin-bottom: 4px;
+}
+
+.sellerName {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.btnPrimary {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: var(--accent-dark, #1F4D36);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid var(--line-strong, #C7C3B6);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--ink, #16243D);
+  margin-top: 12px;
+}
+
+.ownNotice {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: var(--gray-tint, #EDECE7);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--muted, #6E6D65);
+}
+
+.subtle {
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+}
+
+.errorText {
+  color: var(--stamp, #B23A2E);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.statusAvailable {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--accent-tint, #E6EFE9);
+  color: var(--accent-dark, #1F4D36);
+  white-space: nowrap;
+}
+
+.statusSold {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--gray-tint, #EDECE7);
+  color: var(--muted, #6E6D65);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .imageBlock {
+    width: 100%;
+  }
+}

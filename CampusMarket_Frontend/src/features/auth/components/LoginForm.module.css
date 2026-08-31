@@ -1,0 +1,11 @@
+.forgotRow { text-align: right; margin-top: 6px; font-size: 12px; }
+
+.forgotLink {
+  color: var(--accent-dark, #1F4D36);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,234 @@
+.layout {
+  display: flex;
+  height: calc(100vh - 60px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--line, #DEDBD1);
+  padding: 20px 16px;
+  overflow-y: auto;
+}
+
+.sidebarTitle {
+  font-family: var(--serif, serif);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 0 16px;
+}
+
+.conversationList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conversationItem {
+  text-align: left;
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.conversationItemActive {
+  border-color: var(--accent-dark, #1F4D36);
+  background: var(--accent-tint, #E6EFE9);
+}
+
+.conversationThumb {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--gray-tint, #EDECE7);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--muted, #6E6D65);
+}
+
+.conversationText {
+  min-width: 0;
+  flex: 1;
+}
+
+.conversationTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.otherPartyName {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.productTitle {
+  font-size: 12px;
+  color: var(--muted, #6E6D65);
+  margin-top: 2px;
+}
+
+.lastMessage {
+  font-size: 12px;
+  color: var(--muted, #6E6D65);
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thread {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+
+.emptyThread {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.threadHeader {
+  border-bottom: 1px solid var(--line, #DEDBD1);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.backButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted, #6E6D65);
+  padding: 0 0 10px;
+}
+
+.threadHeaderTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.threadOtherParty {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.threadProduct {
+  font-size: 13px;
+  color: var(--muted, #6E6D65);
+  margin-top: 2px;
+}
+
+.messageList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 8px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bubbleMine {
+  align-self: flex-end;
+  background: var(--accent-dark, #1F4D36);
+  color: #FFFFFF;
+  border-bottom-right-radius: 4px;
+}
+
+.bubbleTheirs {
+  align-self: flex-start;
+  background: var(--gray-tint, #EDECE7);
+  color: var(--ink, #16243D);
+  border-bottom-left-radius: 4px;
+}
+
+.composer {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.composerInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.sendButton {
+  padding: 10px 20px;
+  background: var(--accent-dark, #1F4D36);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subtle {
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+}
+
+.errorText {
+  color: var(--stamp, #B23A2E);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Below this width: single-pane mobile chat pattern. Show the list OR the
+   thread, never both — two 300px+ panes side by side simply don't fit on
+   a phone screen. The back button only makes sense in this mode. */
+@media (max-width: 760px) {
+  .layout {
+    height: calc(100vh - 56px);
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+  }
+
+  .sidebarHiddenOnMobile {
+    display: none;
+  }
+
+  .threadHiddenOnMobile {
+    display: none;
+  }
+
+  .backButton {
+    display: block;
+  }
+}

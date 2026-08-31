@@ -1,0 +1,170 @@
+
+Mylistingspage.module · CSS
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+ 
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+ 
+.pageTitle {
+  font-family: var(--serif, serif);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+ 
+.btnPrimary {
+  padding: 8px 16px;
+  background: var(--accent-dark, #1F4D36);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+ 
+.btnPrimary:hover {
+  background: #163a29;
+}
+ 
+.subtle {
+  color: var(--muted, #6E6D65);
+  font-size: 13px;
+}
+ 
+.errorText {
+  color: var(--stamp, #B23A2E);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+ 
+.emptyState {
+  text-align: center;
+  padding: 40px 0;
+}
+ 
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+ 
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+ 
+.thumb {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: var(--gray-tint, #EDECE7);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--muted, #6E6D65);
+}
+ 
+.info {
+  flex: 1;
+  min-width: 140px;
+}
+ 
+.title {
+  font-weight: 600;
+  font-size: 14px;
+}
+ 
+.meta {
+  font-size: 12px;
+  color: var(--muted, #6E6D65);
+  margin: 2px 0 6px;
+}
+ 
+.statusAvailable {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--accent-tint, #E6EFE9);
+  color: var(--accent-dark, #1F4D36);
+}
+ 
+.statusSold {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--gray-tint, #EDECE7);
+  color: var(--muted, #6E6D65);
+}
+ 
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+ 
+.actionBtn {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--line-strong, #C7C3B6);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--ink, #16243D);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+ 
+.actionBtn:hover {
+  background: var(--accent-tint, #E6EFE9);
+  border-color: var(--accent-dark, #1F4D36);
+  color: var(--accent-dark, #1F4D36);
+}
+ 
+.deleteBtn {
+  color: var(--stamp, #B23A2E);
+  border-color: var(--stamp, #B23A2E);
+}
+ 
+.deleteBtn:hover {
+  background: rgba(178, 58, 46, 0.08);
+  border-color: var(--stamp, #B23A2E);
+  color: var(--stamp, #B23A2E);
+}
+ 
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+ 
+  .actions {
+    width: 100%;
+  }
+ 
+  .actionBtn {
+    flex: 1;
+  }
+}
+ 

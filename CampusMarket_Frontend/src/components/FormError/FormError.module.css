@@ -1,0 +1,8 @@
+.formError {
+  background: var(--stamp-tint);
+  color: var(--stamp);
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+}

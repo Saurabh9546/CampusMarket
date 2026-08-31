@@ -1,0 +1,80 @@
+.wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 120px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 20px;
+  font-size: 13px;
+  background: var(--gray-tint, #EDECE7);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--card, #FFFFFF);
+  border: 1px solid var(--line, #DEDBD1);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 200;
+  overflow: hidden;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.dropdownMessage {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--muted, #6E6D65);
+}
+
+.resultItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line, #DEDBD1);
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+}
+
+.resultItem:hover {
+  background: var(--gray-tint, #EDECE7);
+}
+
+.resultTitle {
+  font-weight: 600;
+  color: var(--ink, #16243D);
+}
+
+.resultPrice {
+  font-family: var(--mono, monospace);
+  color: var(--accent-dark, #1F4D36);
+  font-size: 12px;
+}
+
+.viewAll {
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--accent-dark, #1F4D36);
+  font-weight: 600;
+}
+
+.viewAll:hover {
+  background: var(--accent-tint, #E6EFE9);
+}

@@ -1,0 +1,24 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  transition: background 0.15s ease;
+}
+
+.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.primary:hover:not(:disabled) { background: var(--accent-dark); }
+
+.secondary { background: #fff; color: var(--ink); border-color: var(--line-strong); }
+.secondary:hover:not(:disabled) { background: var(--paper); }
+
+.danger { background: #fff; color: var(--stamp); border-color: var(--stamp); }
+
+.fullWidth { width: 100%; }
+
+.button:disabled { opacity: 0.6; cursor: not-allowed; }
