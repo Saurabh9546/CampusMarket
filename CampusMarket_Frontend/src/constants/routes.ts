@@ -7,6 +7,7 @@ export const ROUTES = {
   home: '/home',
   sell: '/sell',
   wishlist: '/wishlist',
+  resendVerification: '/resend-verification',
 
   productDetail: '/products/:id',
   productDetailPath: (id: number | string) => `/products/${id}`,

@@ -4,6 +4,7 @@ import { RegisterPage } from '@/features/auth/pages/RegisterPage';
 import { VerifyEmailPage } from '@/features/auth/pages/VerifyEmailPage';
 import { ForgotPasswordPage } from '@/features/auth/pages/ForgotPasswordPage';
 import { ResetPasswordPage } from '@/features/auth/pages/ResetPasswordPage';
+import { ResendVerificationPage } from '@/features/auth/pages/ResendVerificationPage';
 import { HomePage } from '@/features/marketplace/pages/HomePage';
 import { CreateListingPage } from '@/features/marketplace/pages/CreateListingPage';
 import { EditListingPage } from '@/features/marketplace/pages/EditListingPage';
@@ -25,6 +26,7 @@ export function AppRouter() {
         <Route path={ROUTES.verifyEmail} element={<VerifyEmailPage />} />
         <Route path={ROUTES.forgotPassword} element={<ForgotPasswordPage />} />
         <Route path={ROUTES.resetPassword} element={<ResetPasswordPage />} />
+        <Route path={ROUTES.resendVerification} element={<ResendVerificationPage />} />
         <Route
           path={ROUTES.home}
           element={

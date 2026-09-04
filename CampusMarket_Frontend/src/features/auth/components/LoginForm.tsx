@@ -10,11 +10,9 @@ import { ROUTES } from '@/constants/routes';
 import { AuthFooterLink } from './AuthFooterLink';
 import styles from './LoginForm.module.css';
 
-/**
- * Note: the login endpoint doesn't distinguish "wrong password" from "correct
- * password, not verified yet" in its response shape. This form shows whatever
- * message the backend returns as-is.
- */
+// Login doesn't tell us if it's a wrong password or an unverified account —
+// same error message either way. Just showing whatever the backend sends.
+
 export function LoginForm() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -64,6 +62,9 @@ export function LoginForm() {
       />
       <div className={styles.forgotRow}>
         <Link to={ROUTES.forgotPassword} className={styles.forgotLink}>Forgot password?</Link>
+      </div>
+      <div className={styles.forgotRow}>
+        <Link to={ROUTES.resendVerification} className={styles.forgotLink}>Resend verification email</Link>
       </div>
 
       <FormError message={formError} />

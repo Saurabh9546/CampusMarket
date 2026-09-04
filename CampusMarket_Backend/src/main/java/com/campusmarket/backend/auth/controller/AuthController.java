@@ -48,6 +48,12 @@ public class AuthController {
         return ApiResponse.success(null);
     }
 
+    @PostMapping("/resend-verification")
+    public ApiResponse<Void> resendVerification(@Valid @RequestBody ForgotPasswordRequest request) {
+        authService.resendVerification(request.getEmail());
+        return ApiResponse.success(null);
+    }
+
     @PostMapping("/refresh")
     public ApiResponse<Map<String, String>> refresh(HttpServletRequest request) {
         String rawToken = extractCookie(request, "refreshToken");

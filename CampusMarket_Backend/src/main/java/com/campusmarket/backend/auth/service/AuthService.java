@@ -105,6 +105,22 @@ public class AuthService {
         userRepository.save(user);
     }
 
+    /**
+     * Always returns silently, even if the email doesn't exist or is already
+     * verified — prevents leaking which emails are registered.
+     */
+    public void resendVerification(String email) {
+        userRepository.findByEmail(email).ifPresent(user -> {
+            if (user.isVerified()) return;
+
+            user.setVerificationToken(UUID.randomUUID().toString());
+            user.setVerificationTokenExpiry(LocalDateTime.now().plusHours(24));
+            userRepository.save(user);
+
+            emailService.sendVerificationEmail(user.getEmail(), user.getVerificationToken());
+        });
+    }
+
     public String refresh(String rawRefreshToken) {
         Long userId = refreshTokenService.validateAndGetUserId(rawRefreshToken);
         User user = userRepository.findById(userId)
