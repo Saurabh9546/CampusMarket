@@ -8,7 +8,6 @@
   gap: 8px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
-  padding: 10px 12px;
   background: #fff;
 }
 
@@ -22,9 +21,11 @@
   font-size: 13px;
   font-family: var(--font-sans);
   background: transparent;
+  padding: 10px 12px;
+  min-width: 0;
 }
 
-.iconSlot { color: var(--muted); display: flex; }
+.iconSlot { color: var(--muted); display: flex; padding-left: 12px; }
 
 .errorText { font-size: 11px; color: var(--stamp); }
 
@@ -33,6 +34,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  padding-right: 12px;
   font-size: 14px;
   color: var(--muted);
   flex-shrink: 0;
