@@ -6,6 +6,8 @@ import type { ApiResponse } from '@/types';
  * - refresh token lives in an httpOnly cookie the browser sends automatically
  *   (credentials: 'include') — this file never reads or writes that cookie directly
  * - on a 401, attempt exactly one silent refresh, then retry the original request once
+ * - BASE_URL resolves to VITE_API_URL in production (set in Vercel), falling back
+ *   to a relative path locally, where Vite's dev server proxies /api to the backend
  *
  * Network-failure handling: fetch() itself can reject (server unreachable, DNS
  * failure, connection refused) rather than resolving with a bad status code.
@@ -18,7 +20,7 @@ import type { ApiResponse } from '@/types';
  * real auth rejection via the `networkError` flag if they need to.
  */
 
-const BASE_URL = '/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
 let accessToken: string | null = null;
 let onAuthExpired: (() => void) | null = null;
