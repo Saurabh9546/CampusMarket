@@ -2,17 +2,15 @@ import { createContext, useCallback, useMemo, useRef, useState, type ReactNode }
 import type { ApiResponse, User } from '@/types';
 import { setAccessToken, setAuthExpiredHandler } from '@/api/client';
 import * as authApi from '@/api/auth';
+import * as usersApi from '@/api/users';
 import type { LoginResult } from '@/api/auth';
 
 /**
- * Single funnel for all auth operations. Every features/auth page calls
- * these methods — none call `api/auth.ts` directly. This replaces three
- * different access patterns that previously existed (Login via context,
- * Register and VerifyEmail hitting the API layer directly).
+ * All auth calls go through this context instead of hitting api/auth.ts
+ * directly, so there's one place handling login/register/verify/etc.
  *
- * Return type is `ApiResponse<T>` throughout — the same envelope api/client.ts
- * already returns — rather than a second, ad-hoc {success, message} shape.
- * Consumers check `result.success` and read `result.data` or `result.message`.
+ * Everything returns the same ApiResponse<T> shape as api/client.ts —
+ * check result.success, then read result.data or result.message.
  */
 interface AuthContextValue {
   currentUser: User | null;
@@ -23,6 +21,7 @@ interface AuthContextValue {
   verifyEmail: (token: string) => Promise<ApiResponse<null>>;
   resendVerification: (email: string) => Promise<ApiResponse<null>>;
   logout: () => Promise<void>;
+  updateProfile: (name: string) => Promise<ApiResponse<User>>;
   /** Called once by ProtectedRoute on first mount — never called from public pages. */
   ensureSessionChecked: () => Promise<void>;
 }
@@ -47,12 +46,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setAuthExpiredHandler(clearSession);
   }, [clearSession]);
 
-  /**
-   * Gated session check (fix for the "doomed request on every page load"
-   * perf issue): only runs when a protected route actually mounts and
-   * requests it, not unconditionally for every visitor including logged-out
-   * ones on /login or /register. De-duped via sessionCheckRef so concurrent
-   * ProtectedRoute mounts don't fire it twice.
+    /**
+   * Only checks the session when a protected page actually needs it —
+   * not on every page load. sessionCheckRef stops it from firing twice
+   * if multiple protected routes mount at once.
    */
   const ensureSessionChecked = useCallback((): Promise<void> => {
     if (currentUser) return Promise.resolve(); // already known from a just-completed login
@@ -93,6 +90,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     clearSession();
   }, [clearSession]);
 
+  const updateProfile = useCallback(async (name: string) => {
+    const result = await usersApi.updateProfile({ name });
+    if (result.success) {
+      setCurrentUser(result.data);
+    }
+    return result;
+  }, []);
+
   const value = useMemo<AuthContextValue>(
     () => ({
       currentUser,
@@ -103,9 +108,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       verifyEmail,
       resendVerification,
       logout,
+      updateProfile,
       ensureSessionChecked,
     }),
-    [currentUser, isLoading, login, register, verifyEmail, resendVerification, logout, ensureSessionChecked],
+    [currentUser, isLoading, login, register, verifyEmail, resendVerification, logout, updateProfile, ensureSessionChecked],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

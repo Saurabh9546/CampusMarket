@@ -51,15 +51,29 @@
   border-radius: 8px;
   font-size: 13px;
   color: var(--muted, #6E6D65);
-  cursor: not-allowed;
+  cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-.editButton:not(:disabled):hover {
+.editButton:hover {
   background: var(--accent-tint, #E6EFE9);
   border-color: var(--accent-dark, #1F4D36);
   color: var(--accent-dark, #1F4D36);
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .statsRow {
