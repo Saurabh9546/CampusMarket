@@ -8,6 +8,7 @@ import com.campusmarket.backend.product.mapper.ProductMapper;
 import com.campusmarket.backend.product.repository.ProductRepository;
 import com.campusmarket.backend.wishlist.entity.Wishlist;
 import com.campusmarket.backend.wishlist.repository.WishlistRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
