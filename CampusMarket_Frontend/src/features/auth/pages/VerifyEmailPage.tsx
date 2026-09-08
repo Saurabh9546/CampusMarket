@@ -6,13 +6,18 @@ import { useAuth } from '@/hooks/useAuth';
 import { ROUTES } from '@/constants/routes';
 import styles from './VerifyEmailPage.module.css';
 
-type ViewState = 'pending' | 'verifying' | 'verified' | 'error' | 'expired';
+type ViewState = 'pending' | 'confirm' | 'verifying' | 'verified' | 'error' | 'expired';
 
 /**
  * Handles both entry points:
  * 1. Right after registration (no token in URL) — "check your inbox" state.
- * 2. The user clicking the emailed verification link (?token=...) — calls
- *    GET /auth/verify and shows the result.
+ * 2. The user clicking the emailed verification link (?token=...) — shows a
+ *    confirm button before calling GET /auth/verify. Verification is NOT
+ *    triggered automatically on page load: many email clients and in-app
+ *    browsers (Outlook Safe Links, Gmail scanners, Instagram/Snapchat's
+ *    in-app browser) prefetch links before the user taps them, which would
+ *    silently consume a one-time token if the API call fired on mount.
+ *    Requiring an explicit click means only a real user action verifies.
  */
 export function VerifyEmailPage() {
   const navigate = useNavigate();
@@ -22,23 +27,21 @@ export function VerifyEmailPage() {
   const emailFromRegistration = (location.state as { email?: string } | null)?.email;
   const { verifyEmail, resendVerification } = useAuth();
 
-  const [view, setView] = useState<ViewState>(token ? 'verifying' : 'pending');
+  const [view, setView] = useState<ViewState>(token ? 'confirm' : 'pending');
   const [resendCooldown, setResendCooldown] = useState(0);
 
-  useEffect(() => {
+  const handleConfirmVerify = async () => {
     if (!token) return;
-    (async () => {
-      const result = await verifyEmail(token);
-      if (result.success) {
-        setView('verified');
-      } else if (result.message.toLowerCase().includes('expired')) {
-        setView('expired');
-      } else {
-        setView('error');
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+    setView('verifying');
+    const result = await verifyEmail(token);
+    if (result.success) {
+      setView('verified');
+    } else if (result.message.toLowerCase().includes('expired')) {
+      setView('expired');
+    } else {
+      setView('error');
+    }
+  };
 
   useEffect(() => {
     if (resendCooldown <= 0) return;
@@ -51,6 +54,31 @@ export function VerifyEmailPage() {
     await resendVerification(emailFromRegistration);
     setResendCooldown(60); // basic client-side rate limit to prevent spam-clicking resend
   };
+
+  if (view === 'confirm') {
+    return (
+      <AuthLayout>
+        <div className={styles.center}>
+          <div className={styles.iconCircle}>✉</div>
+          <h2>Confirm your email</h2>
+          <p className="subtle">Tap below to verify your account.</p>
+          <Button onClick={() => void handleConfirmVerify()} style={{ marginTop: 16 }}>
+            Verify my email
+          </Button>
+        </div>
+      </AuthLayout>
+    );
+  }
+
+  if (view === 'verifying') {
+    return (
+      <AuthLayout>
+        <div className={styles.center}>
+          <h2>Verifying…</h2>
+        </div>
+      </AuthLayout>
+    );
+  }
 
   if (view === 'verified') {
     return (

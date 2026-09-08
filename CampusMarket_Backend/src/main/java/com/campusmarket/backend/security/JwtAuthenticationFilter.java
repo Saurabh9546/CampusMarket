@@ -14,12 +14,17 @@ import java.io.IOException;
 import java.util.Collections;
 
 /**
- * Runs once per request. Reads the Authorization header, and if a valid JWT
- * is present, sets the authenticated principal so downstream controllers/
- * services can read it via SecurityContextHolder. Requests to /api/v1/auth/**
- * never reach the "reject if missing/invalid" logic in a meaningful way
- * because SecurityConfig already permitAll()s them — this filter still runs
- * on those paths, but simply finds no token and moves on, which is fine.
+ * Runs once per request. If a valid, verified-account JWT is present in the
+ * Authorization header, sets the authenticated principal so downstream
+ * controllers/services can read it via SecurityContextHolder.
+ *
+ * If no Bearer token is present, this filter does nothing to the security
+ * context and simply passes the request along — it never rejects a request
+ * itself. Whether that request is then allowed through is decided entirely
+ * by SecurityConfig's authorizeHttpRequests rules (e.g. /api/v1/auth/**
+ * is permitAll(), so it passes with no authentication; any other path
+ * requires an authenticated principal, which won't exist if no token was
+ * supplied, and Spring Security's own entry point returns 401/403 for those).
  */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -40,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response); // no token — let SecurityConfig's authorization rules decide
+            filterChain.doFilter(request, response);
             return;
         }
 
@@ -49,8 +54,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (jwtService.isTokenValid(token)) {
             String userId = jwtService.extractUserId(token);
 
-            // Enforce the "unverified accounts are blocked" rule from the
-            // integration spec at the filter level, not per-controller.
+            // Unverified accounts are blocked at the filter level, before
+            // any controller or service logic runs.
             if (!jwtService.isVerified(token)) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "UNVERIFIED_ACCOUNT");
                 return;
