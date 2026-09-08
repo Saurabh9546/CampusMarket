@@ -4,6 +4,7 @@ import { Input } from '@/components/Input/Input';
 import { Button } from '@/components/Button/Button';
 import { FormError } from '@/components/FormError/FormError';
 import { AuthFooterLink } from '../components/AuthFooterLink';
+import { AuthHero } from '../components/AuthHero';
 import { useAuth } from '@/hooks/useAuth';
 import { ROUTES } from '@/constants/routes';
 import { AuthLayout } from '@/layouts/AuthLayout';
@@ -35,7 +36,7 @@ export function ResendVerificationPage() {
 
   if (submitted) {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />}>
         <div className={styles.center}>
           <div className={styles.iconCircle}>✉</div>
           <h2>Check your inbox</h2>
@@ -51,7 +52,7 @@ export function ResendVerificationPage() {
   }
 
   return (
-    <AuthLayout>
+    <AuthLayout hero={<AuthHero />}>
       <h2>Resend verification email</h2>
       <p className="subtle" style={{ marginBottom: 10 }}>
         Enter your college email and we'll send you a new verification link.

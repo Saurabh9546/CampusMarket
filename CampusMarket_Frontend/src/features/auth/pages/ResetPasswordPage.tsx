@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Input } from '@/components/Input/Input';
 import { Button } from '@/components/Button/Button';
 import { FormError } from '@/components/FormError/FormError';
+import { AuthHero } from '../components/AuthHero';
 import * as authApi from '@/api/auth';
 import { ROUTES } from '@/constants/routes';
 import { AuthLayout } from '@/layouts/AuthLayout';
@@ -20,7 +21,7 @@ export function ResetPasswordPage() {
 
   if (!token) {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />}>
         <div className={styles.center}>
           <div className={`${styles.iconCircle} ${styles.errorCircle}`}>!</div>
           <h2>Invalid link</h2>
@@ -58,7 +59,7 @@ export function ResetPasswordPage() {
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout hero={<AuthHero />}>
       <h2>Set a new password</h2>
       <form onSubmit={handleSubmit} noValidate>
         <Input

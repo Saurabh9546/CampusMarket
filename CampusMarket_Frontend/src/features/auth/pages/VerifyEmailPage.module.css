@@ -1,4 +1,12 @@
-.center { text-align: center; }
+.center {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
 
 .iconCircle {
   width: 56px;
