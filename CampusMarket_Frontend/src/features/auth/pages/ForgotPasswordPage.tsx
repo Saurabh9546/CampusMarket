@@ -35,7 +35,7 @@ export function ForgotPasswordPage() {
 
   if (submitted) {
     return (
-      <AuthLayout hero={<AuthHero />}>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <div className={styles.iconCircle}>✉</div>
           <h2>Check your inbox</h2>
@@ -51,7 +51,7 @@ export function ForgotPasswordPage() {
   }
 
   return (
-    <AuthLayout hero={<AuthHero />}>
+    <AuthLayout hero={<AuthHero />} stacked>
       <h2>Forgot your password?</h2>
       <p className="subtle" style={{ marginBottom: 10 }}>
         Enter your college email and we'll send you a reset link.

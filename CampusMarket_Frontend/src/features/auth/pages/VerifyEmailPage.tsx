@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { AuthLayout } from '@/layouts/AuthLayout';
+import { AuthHero } from '../components/AuthHero';
 import { Button } from '@/components/Button/Button';
 import { useAuth } from '@/hooks/useAuth';
 import { ROUTES } from '@/constants/routes';
@@ -57,7 +58,7 @@ export function VerifyEmailPage() {
 
   if (view === 'confirm') {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <div className={styles.iconCircle}>✉</div>
           <h2>Confirm your email</h2>
@@ -72,7 +73,7 @@ export function VerifyEmailPage() {
 
   if (view === 'verifying') {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <h2>Verifying…</h2>
         </div>
@@ -82,7 +83,7 @@ export function VerifyEmailPage() {
 
   if (view === 'verified') {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <div className={styles.iconCircle}>✓</div>
           <h2>Email verified</h2>
@@ -97,7 +98,7 @@ export function VerifyEmailPage() {
 
   if (view === 'expired' || view === 'error') {
     return (
-      <AuthLayout>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <div className={`${styles.iconCircle} ${styles.errorCircle}`}>!</div>
           <h2>{view === 'expired' ? 'Link expired' : 'Verification failed'}</h2>
@@ -117,7 +118,7 @@ export function VerifyEmailPage() {
   }
 
   return (
-    <AuthLayout>
+    <AuthLayout hero={<AuthHero />} stacked>
       <div className={styles.center}>
         <div className={styles.iconCircle}>✉</div>
         <h2>Check your inbox</h2>

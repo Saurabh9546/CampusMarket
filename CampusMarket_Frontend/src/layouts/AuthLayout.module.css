@@ -20,6 +20,25 @@
   margin: 0 auto;
 }
 
+.wrap.stacked {
+  flex-direction: column;
+}
+
+.wrap.stacked .hero {
+  flex: none;
+  justify-content: flex-start;
+  padding: 20px 40px;
+}
+
+.wrap.stacked .form {
+  width: 100%;
+  max-width: 460px;
+  flex: none;
+  padding: 60px 40px;
+  margin: 48px auto 48px;
+  justify-content: flex-start;
+}
+
 @media (max-width: 768px) {
   .wrap { flex-direction: column; min-height: 100vh; }
   .hero {
@@ -33,5 +52,11 @@
     padding: 32px 24px;
     margin: 0;
     justify-content: flex-start;
+  }
+  .wrap.stacked .hero { padding: 16px 20px; }
+  .wrap.stacked .form {
+    max-width: 100%;
+    padding: 32px 24px;
+    margin: 24px auto;
   }
 }

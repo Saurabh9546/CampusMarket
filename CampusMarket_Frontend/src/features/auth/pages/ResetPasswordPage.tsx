@@ -21,7 +21,7 @@ export function ResetPasswordPage() {
 
   if (!token) {
     return (
-      <AuthLayout hero={<AuthHero />}>
+      <AuthLayout hero={<AuthHero />} stacked>
         <div className={styles.center}>
           <div className={`${styles.iconCircle} ${styles.errorCircle}`}>!</div>
           <h2>Invalid link</h2>
@@ -59,7 +59,7 @@ export function ResetPasswordPage() {
   };
 
   return (
-    <AuthLayout hero={<AuthHero />}>
+    <AuthLayout hero={<AuthHero />} stacked>
       <h2>Set a new password</h2>
       <form onSubmit={handleSubmit} noValidate>
         <Input
