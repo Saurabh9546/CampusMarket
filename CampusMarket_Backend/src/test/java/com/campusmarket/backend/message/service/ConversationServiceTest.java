@@ -7,7 +7,6 @@ import com.campusmarket.backend.exception.ResourceNotFoundException;
 import com.campusmarket.backend.message.dto.ConversationDetailDto;
 import com.campusmarket.backend.message.dto.ConversationDto;
 import com.campusmarket.backend.message.entity.Conversation;
-import com.campusmarket.backend.message.entity.Message;
 import com.campusmarket.backend.message.mapper.ConversationMapper;
 import com.campusmarket.backend.message.mapper.MessageMapper;
 import com.campusmarket.backend.message.repository.ConversationRepository;
